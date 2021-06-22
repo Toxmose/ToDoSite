@@ -34,6 +34,7 @@ const addNewHighlight = () => {
   toDoList.appendChild(newHighlight);
 };
 
+// BELOW CODE IS NOT WORKING
 const updateValue = (e) => {
   log = document.getElementsByTagName("li");
   log.textContent = e.target.value;
@@ -44,6 +45,7 @@ const registerToDo = () => {
   registerToDoContent.className = `log${i}`;
   toDoList.appendChild(registerToDoContent);
 };
+// ABOVE CODE IS NOT WORKING
 
 addBtn.addEventListener("click", () => {
   addNewTask();
