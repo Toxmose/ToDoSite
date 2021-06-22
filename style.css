@@ -5,6 +5,36 @@
 }
 
 body {
-  background-color: blanchedalmond;
+  background-color: #eeeeee;
   font-family: "Roboto", sans-serif;
 }
+
+h1 {
+  margin: 20px;
+}
+
+input {
+  margin: 20px 25px;
+}
+
+i {
+  margin: 5px;
+  color: #393e46;
+}
+
+i:hover {
+  color: #00adb5;
+}
+
+.btn-add {
+  display: inline-block;
+  background-color: #00adb5;
+  border: none;
+  padding: 10px;
+  border-radius: 10%;
+  margin: 30px;
+}
+
+/* .hidden {
+  display: none;
+} */
