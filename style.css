@@ -21,6 +21,10 @@ h1,
   margin: 10px;
 }
 
+i {
+  pointer-events: none;
+}
+
 #new-todo {
   padding: 5px;
   width: 300px;
@@ -81,4 +85,8 @@ h1,
 
 .todo-item li {
   flex: 1;
+}
+
+.done {
+  text-decoration: line-through;
 }

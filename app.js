@@ -6,6 +6,7 @@ const todoList = document.querySelector(".todo-list");
 // click events
 
 addButton.addEventListener("click", newToDo);
+todoList.addEventListener("click", checkRaiseDelete);
 
 // functions
 
@@ -44,4 +45,13 @@ function newToDo(event) {
 
   // empty input field
   newToDoInput.value = "";
+}
+
+// when clicking the clipboard button - text should get class added to change font to strikethrough
+function checkRaiseDelete(e) {
+  const item = e.target;
+  if (item.classList.contains("btn-done")) {
+    const todo = item.parentElement;
+    todo.classList.add("done");
+  } else console.log("nope");
 }
