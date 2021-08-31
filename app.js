@@ -1,56 +1,47 @@
-const addBtn = document.querySelector(".btn-add");
-const toDoList = document.querySelector(".toDoList");
-// const log = document.querySelector(".log");
-// add a counter i to count how many input fields we have and to edit the class-name?
-let i = 0;
-let log = "";
+// selectors
+const addButton = document.querySelector(".btn-add-todo");
+const newToDoInput = document.getElementById("new-todo");
+const todoList = document.querySelector(".todo-list");
 
-const addNewTask = () => {
-  // input field should be a toggle class - toggled visible whenever the add task button is clicked and dissapearing when task is entered
-  newToDo = document.createElement("input");
-  newToDo.setAttribute("type", "text");
-  newToDo.setAttribute("placeholder", "So, what are we doing?");
-  toDoList.appendChild(newToDo);
-  newToDo.addEventListener("change", updateValue);
-  i++;
-};
+// click events
 
-// the "addNew" functions should be called when the task is entered, not when adding a new task.
-const addNewTrashCan = () => {
-  newTrashCan = document.createElement("i");
-  newTrashCan.className = "fa fas fa-trash";
-  toDoList.appendChild(newTrashCan);
-};
+addButton.addEventListener("click", newToDo);
 
-const addNewClipboardCheck = () => {
-  newClipboardCheck = document.createElement("i");
-  newClipboardCheck.className = "fa fas fa-clipboard-check";
-  toDoList.appendChild(newClipboardCheck);
-};
+// functions
 
-const addNewHighlight = () => {
-  newHighlight = document.createElement("i");
-  newHighlight.className = "fa fas fa-exclamation-circle";
-  toDoList.appendChild(newHighlight);
-};
+function newToDo(event) {
+  // prevent form from submitting
+  event.preventDefault();
 
-// BELOW CODE IS NOT WORKING
-const updateValue = (e) => {
-  log = document.getElementsByTagName("li");
-  log.textContent = e.target.value;
-};
+  // create div
+  const newItem = document.createElement("div");
+  newItem.classList.add("todo-item");
+  todoList.appendChild(newItem);
 
-const registerToDo = () => {
-  registerToDoContent = document.createElement("li");
-  registerToDoContent.className = `log${i}`;
-  toDoList.appendChild(registerToDoContent);
-};
-// ABOVE CODE IS NOT WORKING
+  // create li
+  const toDoContent = document.createElement("li");
+  toDoContent.innerText = newToDoInput.value;
+  newItem.appendChild(toDoContent);
 
-addBtn.addEventListener("click", () => {
-  addNewTask();
-  addNewClipboardCheck();
-  addNewTrashCan();
-  addNewHighlight();
-  registerToDo();
-});
+  // create 3 buttons
+  const clipBoardButton = document.createElement("button");
+  clipBoardButton.innerHTML = "<i class='fas fa-clipboard-check'></i>";
+  clipBoardButton.classList.add("btn");
+  clipBoardButton.classList.add("btn-done");
+  newItem.appendChild(clipBoardButton);
+
+  const exclamationButton = document.createElement("button");
+  exclamationButton.innerHTML = "<i class='fas fa-exclamation-circle'></i>";
+  exclamationButton.classList.add("btn");
+  exclamationButton.classList.add("btn-important");
+  newItem.appendChild(exclamationButton);
+
+  const trashButton = document.createElement("button");
+  trashButton.innerHTML = "<i class='fas fa-trash'></i>";
+  trashButton.classList.add("btn");
+  trashButton.classList.add("btn-trash");
+  newItem.appendChild(trashButton);
+
+  // empty input field
+  newToDoInput.value = "";
+}
